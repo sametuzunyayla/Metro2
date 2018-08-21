@@ -1,0 +1,128 @@
+﻿
+@using Metro.Models
+@model GorevBilgileri
+
+@{
+    ViewBag.Title = "GorevEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@{if (Session["Email"] != null)
+    {
+
+        using (Html.BeginForm("GorevEkle", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "my_form" }))
+        {
+            @Html.ValidationSummary(true)
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="card">
+                                <div class="header">
+                                    <h2 style="color:red">@ViewBag.Hata</h2>
+
+                                    <h4 class="title">Görev Ekle</h4>
+
+                                </div>
+                                <div class="content">
+                                    &nbsp;&nbsp;&nbsp;
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>ŞİRKET </label>
+                                                <input type="text" class="form-control" disabled placeholder="Company" value="Metro İstanbul A.Ş.">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Görev Adı</label>
+                                                @Html.TextBoxFor(model => model.Gorev_Adı, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Açıklama</label>
+                                                @Html.TextBoxFor(model => model.Aciklamasi, new { @class = "form-control", @type = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Kategori</label>
+                                            @Html.DropDownListFor(model => model.KategoriId, (SelectList)ViewBag.KategoriId, "", new { @Id = "KategorId", @class = "form-control" })
+
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>İş Önceliği</label>
+
+                                                @Html.DropDownListFor(model => model.IsOnceligiId, (SelectList)ViewBag.IsOnceligiId, "", new { @Id = "IsOnceligiId", @class = "form-control" })
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Görevli</label>
+                                                @*@Html.LabelFor(model => model.GorevliId)
+        @Html.TextBoxFor(model => model.GorevliId, new { @class = "form-control", @id = "GorevliId", @type = "form-control" })
+        @Html.ValidationMessageFor(model => model.GorevliId)*@
+                                                @Html.DropDownListFor(model => model.GorevliId, (SelectList)ViewBag.GorevliId, "", new { @Id = "IsOnceligiId", @class = "form-control" })
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Yönetici</label>
+                                                @* @Html.LabelFor(model => model.YoneticiId)
+                                                        @Html.TextBoxFor(model => model.YoneticiId, new { @class = "form-control", @id = "YoneticiId" })
+                                                        @Html.ValidationMessageFor(model => model.YoneticiId)*@
+                                                        @Html.DropDownListFor(model => model.YoneticiId, (SelectList)ViewBag.YoneticiId, "", new { @Id = "IsOnceligiId", @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <p align="center">
+
+                                                <button type="submit" class="btn btn-dark">Kaydet</button>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                }}
+            else
+            {
+
+
+                Response.Redirect("~/Home/Anasayfa");
+
+            }
+        }

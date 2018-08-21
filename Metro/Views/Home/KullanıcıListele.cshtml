@@ -1,0 +1,116 @@
+﻿@using Metro.Models
+@model  List<KullaniciBilgileri>
+
+
+@{
+    ViewBag.Title = "KullanıcıListele";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kullanıcı Listesi</h2>
+
+
+<
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="container" style="width:100%;">
+        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+        <br>
+        <table class="table table-bordered table-striped">
+
+            <tbody id="myTable">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model[0].Ad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model[0].Soyad)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model[0].Doğum_Tarihi)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model[0].Pozisyon)
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Tel
+                    </th>
+
+
+
+
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Soyad)
+                        </td>
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Doğum_Tarihi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pozisyon)
+                        </td>
+                        <td>
+                            @{ if (item.İletişim_Tipi == "Email")
+                                {@Html.DisplayFor(modelItem => item.İletişim_Adresi)}
+                            }
+                        </td>
+                        <td>
+                            @{ if (item.İletişim_Tipi == "Tel")
+                                {@Html.DisplayFor(modelItem => item.İletişim_Adresi)}
+                            }
+                        </td>
+
+                        @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { ID = item.Kullanici_Id }) |
+
+                        @Html.ActionLink("Delete", "Delete", new { ID = item.Kullanici_Id })
+                    </td>*@
+                    </tr>}
+
+            </tbody>
+        </table>
+
+
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+    
+
+</body>
+</html>
+
+
+

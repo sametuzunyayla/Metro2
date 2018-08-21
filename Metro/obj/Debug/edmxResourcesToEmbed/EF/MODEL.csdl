@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JiraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="JiraEntities3" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="KullaniciBilgileri" IsComposable="true" ReturnType="Collection(JiraModel.KullaniciBilgileri_Result)" />
+    <EntitySet Name="Giris_Bilgileri" EntityType="JiraModel.Giris_Bilgileri" />
+    <EntitySet Name="Gorev" EntityType="JiraModel.Gorev" />
+    <EntitySet Name="Iletisim_Tipi" EntityType="JiraModel.Iletisim_Tipi" />
+    <EntitySet Name="Is_Onceligi" EntityType="JiraModel.Is_Onceligi" />
+    <EntitySet Name="Kategori" EntityType="JiraModel.Kategori" />
+    <EntitySet Name="Kullanici" EntityType="JiraModel.Kullanici" />
+    <EntitySet Name="Kullanici_Gorev_Iliskisi" EntityType="JiraModel.Kullanici_Gorev_Iliskisi" />
+    <EntitySet Name="Kullanici_Iletisim_Bilgileri" EntityType="JiraModel.Kullanici_Iletisim_Bilgileri" />
+    <EntitySet Name="Kullanici_Pozisyon_Iliskisi" EntityType="JiraModel.Kullanici_Pozisyon_Iliskisi" />
+    <EntitySet Name="Pozisyon" EntityType="JiraModel.Pozisyon" />
+    <EntitySet Name="sysdiagrams" EntityType="JiraModel.sysdiagrams" />
+    <AssociationSet Name="FK_Gorev_IsOnceligiId_IsOnceligi_Id" Association="JiraModel.FK_Gorev_IsOnceligiId_IsOnceligi_Id">
+      <End Role="Is_Onceligi" EntitySet="Is_Onceligi" />
+      <End Role="Gorev" EntitySet="Gorev" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gorev_Kategori_Kategori_Id" Association="JiraModel.FK_Gorev_Kategori_Kategori_Id">
+      <End Role="Kategori" EntitySet="Kategori" />
+      <End Role="Gorev" EntitySet="Gorev" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kullanici_Gorev_Iliskisi_GorevId_Gorev_Id" Association="JiraModel.FK_Kullanici_Gorev_Iliskisi_GorevId_Gorev_Id">
+      <End Role="Gorev" EntitySet="Gorev" />
+      <End Role="Kullanici_Gorev_Iliskisi" EntitySet="Kullanici_Gorev_Iliskisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kullanici_Iletisim_Bilgileri_IletisimTipiId_Iletisim_Tipi_Id" Association="JiraModel.FK_Kullanici_Iletisim_Bilgileri_IletisimTipiId_Iletisim_Tipi_Id">
+      <End Role="Iletisim_Tipi" EntitySet="Iletisim_Tipi" />
+      <End Role="Kullanici_Iletisim_Bilgileri" EntitySet="Kullanici_Iletisim_Bilgileri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kullanici_Gorev_Iliskisi_KullaniciId_Gorevli_Kullanici_Id" Association="JiraModel.FK_Kullanici_Gorev_Iliskisi_KullaniciId_Gorevli_Kullanici_Id">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Kullanici_Gorev_Iliskisi" EntitySet="Kullanici_Gorev_Iliskisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kullanici_Gorev_Iliskisi_KullaniciId_Yonetici_Kullanici_Id" Association="JiraModel.FK_Kullanici_Gorev_Iliskisi_KullaniciId_Yonetici_Kullanici_Id">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Kullanici_Gorev_Iliskisi" EntitySet="Kullanici_Gorev_Iliskisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kullanici_Iletisim_Bilgileri_KullaniciId_Kullanici_Id" Association="JiraModel.FK_Kullanici_Iletisim_Bilgileri_KullaniciId_Kullanici_Id">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Kullanici_Iletisim_Bilgileri" EntitySet="Kullanici_Iletisim_Bilgileri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kullanici_Pozisyon_Iliskisi_KullaniciId_Kullanici_Id" Association="JiraModel.FK_Kullanici_Pozisyon_Iliskisi_KullaniciId_Kullanici_Id">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Kullanici_Pozisyon_Iliskisi" EntitySet="Kullanici_Pozisyon_Iliskisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kullanici_Pozisyon_Iliskisi_PozisyonId_Pozisyon_Id" Association="JiraModel.FK_Kullanici_Pozisyon_Iliskisi_PozisyonId_Pozisyon_Id">
+      <End Role="Pozisyon" EntitySet="Pozisyon" />
+      <End Role="Kullanici_Pozisyon_Iliskisi" EntitySet="Kullanici_Pozisyon_Iliskisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pozisyon_Id_Pozisyon_UstPozisyonId" Association="JiraModel.FK_Pozisyon_Id_Pozisyon_UstPozisyonId">
+      <End Role="Pozisyon" EntitySet="Pozisyon" />
+      <End Role="Pozisyon1" EntitySet="Pozisyon" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="KullaniciBilgileri_Result">
+    <Property Type="Int32" Name="KullaniciId" Nullable="false" />
+    <Property Type="String" Name="Ad" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Soyad" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="KullaniciAktifMi" Nullable="false" />
+    <Property Type="String" Name="Unvan" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="CepTel" Nullable="true" MaxLength="250" />
+  </ComplexType>
+  <EntityType Name="Giris_Bilgileri">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KullaniciId" Type="Int32" Nullable="false" />
+    <Property Name="KullaniciAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sifre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OlusturmaTarihi" Type="DateTime" Precision="3" />
+    <Property Name="BitisTarihi" Type="DateTime" Precision="3" />
+    <Property Name="AktifMi" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Gorev">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Aciklama" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="KategoriId" Type="Int32" Nullable="false" />
+    <Property Name="IsOnceligiId" Type="Int32" Nullable="false" />
+    <Property Name="OlusturmaTarihi" Type="DateTime" Precision="3" />
+    <Property Name="BitisTarihi" Type="DateTime" Precision="3" />
+    <Property Name="AktifMi" Type="Boolean" />
+    <NavigationProperty Name="Is_Onceligi" Relationship="JiraModel.FK_Gorev_IsOnceligiId_IsOnceligi_Id" FromRole="Gorev" ToRole="Is_Onceligi" />
+    <NavigationProperty Name="Kategori" Relationship="JiraModel.FK_Gorev_Kategori_Kategori_Id" FromRole="Gorev" ToRole="Kategori" />
+    <NavigationProperty Name="Kullanici_Gorev_Iliskisi" Relationship="JiraModel.FK_Kullanici_Gorev_Iliskisi_GorevId_Gorev_Id" FromRole="Gorev" ToRole="Kullanici_Gorev_Iliskisi" />
+  </EntityType>
+  <EntityType Name="Iletisim_Tipi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="OlusturmaTarihi" Type="DateTime" Precision="3" />
+    <Property Name="BitisTarihi" Type="DateTime" Precision="3" />
+    <Property Name="AktifMi" Type="Boolean" />
+    <NavigationProperty Name="Kullanici_Iletisim_Bilgileri" Relationship="JiraModel.FK_Kullanici_Iletisim_Bilgileri_IletisimTipiId_Iletisim_Tipi_Id" FromRole="Iletisim_Tipi" ToRole="Kullanici_Iletisim_Bilgileri" />
+  </EntityType>
+  <EntityType Name="Is_Onceligi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="OlusturmaTarihi" Type="DateTime" Precision="3" />
+    <Property Name="BitisTarihi" Type="DateTime" Precision="3" />
+    <Property Name="AktifMi" Type="Boolean" />
+    <NavigationProperty Name="Gorev" Relationship="JiraModel.FK_Gorev_IsOnceligiId_IsOnceligi_Id" FromRole="Is_Onceligi" ToRole="Gorev" />
+  </EntityType>
+  <EntityType Name="Kategori">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="OlusturmaTarihi" Type="DateTime" Precision="3" />
+    <Property Name="BitisTarihi" Type="DateTime" Precision="3" />
+    <Property Name="AktifMi" Type="Boolean" />
+    <NavigationProperty Name="Gorev" Relationship="JiraModel.FK_Gorev_Kategori_Kategori_Id" FromRole="Kategori" ToRole="Gorev" />
+  </EntityType>
+  <EntityType Name="Kullanici">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Soyad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DogumTarihi" Type="DateTime" Precision="0" />
+    <Property Name="OlusturmaTarihi" Type="DateTime" Precision="3" />
+    <Property Name="BitisTarihi" Type="DateTime" Precision="3" />
+    <Property Name="AktifMi" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Kullanici_Gorev_Iliskisi" Relationship="JiraModel.FK_Kullanici_Gorev_Iliskisi_KullaniciId_Gorevli_Kullanici_Id" FromRole="Kullanici" ToRole="Kullanici_Gorev_Iliskisi" />
+    <NavigationProperty Name="Kullanici_Gorev_Iliskisi1" Relationship="JiraModel.FK_Kullanici_Gorev_Iliskisi_KullaniciId_Yonetici_Kullanici_Id" FromRole="Kullanici" ToRole="Kullanici_Gorev_Iliskisi" />
+    <NavigationProperty Name="Kullanici_Iletisim_Bilgileri" Relationship="JiraModel.FK_Kullanici_Iletisim_Bilgileri_KullaniciId_Kullanici_Id" FromRole="Kullanici" ToRole="Kullanici_Iletisim_Bilgileri" />
+    <NavigationProperty Name="Kullanici_Pozisyon_Iliskisi" Relationship="JiraModel.FK_Kullanici_Pozisyon_Iliskisi_KullaniciId_Kullanici_Id" FromRole="Kullanici" ToRole="Kullanici_Pozisyon_Iliskisi" />
+  </EntityType>
+  <EntityType Name="Kullanici_Gorev_Iliskisi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GorevId" Type="Int32" Nullable="false" />
+    <Property Name="KullaniciId_Gorevli" Type="Int32" Nullable="false" />
+    <Property Name="KullaniciId_Yonetici" Type="Int32" Nullable="false" />
+    <Property Name="OlusturmaTarihi" Type="DateTime" Precision="3" />
+    <Property Name="BitisTarihi" Type="DateTime" Precision="3" />
+    <Property Name="AktifMi" Type="Boolean" />
+    <NavigationProperty Name="Gorev" Relationship="JiraModel.FK_Kullanici_Gorev_Iliskisi_GorevId_Gorev_Id" FromRole="Kullanici_Gorev_Iliskisi" ToRole="Gorev" />
+    <NavigationProperty Name="Kullanici" Relationship="JiraModel.FK_Kullanici_Gorev_Iliskisi_KullaniciId_Gorevli_Kullanici_Id" FromRole="Kullanici_Gorev_Iliskisi" ToRole="Kullanici" />
+    <NavigationProperty Name="Kullanici1" Relationship="JiraModel.FK_Kullanici_Gorev_Iliskisi_KullaniciId_Yonetici_Kullanici_Id" FromRole="Kullanici_Gorev_Iliskisi" ToRole="Kullanici" />
+  </EntityType>
+  <EntityType Name="Kullanici_Iletisim_Bilgileri">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KullaniciId" Type="Int32" Nullable="false" />
+    <Property Name="IletisimTipiId" Type="Int32" Nullable="false" />
+    <Property Name="OlusturmaTarihi" Type="DateTime" Precision="3" />
+    <Property Name="BitisTarihi" Type="DateTime" Precision="3" />
+    <Property Name="AktifMi" Type="Boolean" />
+    <NavigationProperty Name="Iletisim_Tipi" Relationship="JiraModel.FK_Kullanici_Iletisim_Bilgileri_IletisimTipiId_Iletisim_Tipi_Id" FromRole="Kullanici_Iletisim_Bilgileri" ToRole="Iletisim_Tipi" />
+    <NavigationProperty Name="Kullanici" Relationship="JiraModel.FK_Kullanici_Iletisim_Bilgileri_KullaniciId_Kullanici_Id" FromRole="Kullanici_Iletisim_Bilgileri" ToRole="Kullanici" />
+  </EntityType>
+  <EntityType Name="Kullanici_Pozisyon_Iliskisi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KullaniciId" Type="Int32" Nullable="false" />
+    <Property Name="PozisyonId" Type="Int32" Nullable="false" />
+    <Property Name="OlusturmaTarihi" Type="DateTime" Precision="3" />
+    <Property Name="BitisTarihi" Type="DateTime" Precision="3" />
+    <Property Name="AktifMi" Type="Boolean" />
+    <NavigationProperty Name="Kullanici" Relationship="JiraModel.FK_Kullanici_Pozisyon_Iliskisi_KullaniciId_Kullanici_Id" FromRole="Kullanici_Pozisyon_Iliskisi" ToRole="Kullanici" />
+    <NavigationProperty Name="Pozisyon" Relationship="JiraModel.FK_Kullanici_Pozisyon_Iliskisi_PozisyonId_Pozisyon_Id" FromRole="Kullanici_Pozisyon_Iliskisi" ToRole="Pozisyon" />
+  </EntityType>
+  <EntityType Name="Pozisyon">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Seviye" Type="Int32" />
+    <Property Name="UstPozisyonId" Type="Int32" />
+    <Property Name="YoneticiMi" Type="Boolean" Nullable="false" />
+    <Property Name="Aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="OlusturmaTarihi" Type="DateTime" Precision="3" />
+    <Property Name="BitisTarihi" Type="DateTime" Precision="3" />
+    <Property Name="AktifMi" Type="Boolean" />
+    <NavigationProperty Name="Kullanici_Pozisyon_Iliskisi" Relationship="JiraModel.FK_Kullanici_Pozisyon_Iliskisi_PozisyonId_Pozisyon_Id" FromRole="Pozisyon" ToRole="Kullanici_Pozisyon_Iliskisi" />
+    <NavigationProperty Name="Pozisyon1" Relationship="JiraModel.FK_Pozisyon_Id_Pozisyon_UstPozisyonId" FromRole="Pozisyon" ToRole="Pozisyon1" />
+    <NavigationProperty Name="Pozisyon2" Relationship="JiraModel.FK_Pozisyon_Id_Pozisyon_UstPozisyonId" FromRole="Pozisyon1" ToRole="Pozisyon" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Gorev_IsOnceligiId_IsOnceligi_Id">
+    <End Type="JiraModel.Is_Onceligi" Role="Is_Onceligi" Multiplicity="1" />
+    <End Type="JiraModel.Gorev" Role="Gorev" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Is_Onceligi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Gorev">
+        <PropertyRef Name="IsOnceligiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gorev_Kategori_Kategori_Id">
+    <End Type="JiraModel.Kategori" Role="Kategori" Multiplicity="1" />
+    <End Type="JiraModel.Gorev" Role="Gorev" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Gorev">
+        <PropertyRef Name="KategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kullanici_Gorev_Iliskisi_GorevId_Gorev_Id">
+    <End Type="JiraModel.Gorev" Role="Gorev" Multiplicity="1" />
+    <End Type="JiraModel.Kullanici_Gorev_Iliskisi" Role="Kullanici_Gorev_Iliskisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gorev">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kullanici_Gorev_Iliskisi">
+        <PropertyRef Name="GorevId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kullanici_Iletisim_Bilgileri_IletisimTipiId_Iletisim_Tipi_Id">
+    <End Type="JiraModel.Iletisim_Tipi" Role="Iletisim_Tipi" Multiplicity="1" />
+    <End Type="JiraModel.Kullanici_Iletisim_Bilgileri" Role="Kullanici_Iletisim_Bilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Iletisim_Tipi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kullanici_Iletisim_Bilgileri">
+        <PropertyRef Name="IletisimTipiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kullanici_Gorev_Iliskisi_KullaniciId_Gorevli_Kullanici_Id">
+    <End Type="JiraModel.Kullanici" Role="Kullanici" Multiplicity="1" />
+    <End Type="JiraModel.Kullanici_Gorev_Iliskisi" Role="Kullanici_Gorev_Iliskisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kullanici_Gorev_Iliskisi">
+        <PropertyRef Name="KullaniciId_Gorevli" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kullanici_Gorev_Iliskisi_KullaniciId_Yonetici_Kullanici_Id">
+    <End Type="JiraModel.Kullanici" Role="Kullanici" Multiplicity="1" />
+    <End Type="JiraModel.Kullanici_Gorev_Iliskisi" Role="Kullanici_Gorev_Iliskisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kullanici_Gorev_Iliskisi">
+        <PropertyRef Name="KullaniciId_Yonetici" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kullanici_Iletisim_Bilgileri_KullaniciId_Kullanici_Id">
+    <End Type="JiraModel.Kullanici" Role="Kullanici" Multiplicity="1" />
+    <End Type="JiraModel.Kullanici_Iletisim_Bilgileri" Role="Kullanici_Iletisim_Bilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kullanici_Iletisim_Bilgileri">
+        <PropertyRef Name="KullaniciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kullanici_Pozisyon_Iliskisi_KullaniciId_Kullanici_Id">
+    <End Type="JiraModel.Kullanici" Role="Kullanici" Multiplicity="1" />
+    <End Type="JiraModel.Kullanici_Pozisyon_Iliskisi" Role="Kullanici_Pozisyon_Iliskisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kullanici_Pozisyon_Iliskisi">
+        <PropertyRef Name="KullaniciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kullanici_Pozisyon_Iliskisi_PozisyonId_Pozisyon_Id">
+    <End Type="JiraModel.Pozisyon" Role="Pozisyon" Multiplicity="1" />
+    <End Type="JiraModel.Kullanici_Pozisyon_Iliskisi" Role="Kullanici_Pozisyon_Iliskisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pozisyon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kullanici_Pozisyon_Iliskisi">
+        <PropertyRef Name="PozisyonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pozisyon_Id_Pozisyon_UstPozisyonId">
+    <End Type="JiraModel.Pozisyon" Role="Pozisyon" Multiplicity="0..1" />
+    <End Type="JiraModel.Pozisyon" Role="Pozisyon1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pozisyon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pozisyon1">
+        <PropertyRef Name="UstPozisyonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

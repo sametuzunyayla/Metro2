@@ -1,0 +1,62 @@
+﻿@using Metro.Models
+@model GirisBilgileri
+
+@{
+    ViewBag.Title = "Giris";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+
+@{if (Session["Email"] == null)
+
+    {
+
+        <form class="form-login" method="post" action="#">
+
+            <div class="form-log-in-with-email">
+
+                <div class="form-white-background">
+
+                    <div class="form-title-row">
+                        <h1>GİRİŞ YAP</h1>
+                    </div>
+
+                    <div class="form-row">
+                        <h4>@ViewBag.Hata</h4>
+                        <label>
+                            <span>KullaniciAdi</span>
+                            @Html.TextBoxFor(model=>model.UserName, new { @class = "form-control" })
+
+                        </label>
+                    </div>
+
+                    <div class="form-row">
+                        <label>
+                            <span>Şifre</span>
+                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @type = "password" })
+
+                        </label>
+                    </div>
+
+
+                    @*<a href="@Url.Action("Kayıt","Kayıt") "></a>*@
+
+                    <div class="form-row">
+                        <button type="submit">Giriş Yap</button>
+                    </div>
+                </div>
+
+                <a href="" class="form-forgotten-password">Şifremi Unuttum &middot;</a>
+              
+
+            </div>
+
+            
+
+        </form>
+        }
+        else
+        {
+            Response.Redirect("~/Home/Anasayfa");
+        }
+    }

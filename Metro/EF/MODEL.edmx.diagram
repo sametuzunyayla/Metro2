@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cf592f5ac203443ab2f22a466f9d3061" Name="Diagram1">
+        <EntityTypeShape EntityType="JiraModel.Giris_Bilgileri" Width="1.5" PointX="5.75" PointY="1.125" />
+        <EntityTypeShape EntityType="JiraModel.Gorev" Width="1.5" PointX="0.75" PointY="10.5" />
+        <EntityTypeShape EntityType="JiraModel.Iletisim_Tipi" Width="1.5" PointX="3.75" PointY="9.25" />
+        <EntityTypeShape EntityType="JiraModel.Is_Onceligi" Width="1.5" PointX="1.5" PointY="18.375" />
+        <EntityTypeShape EntityType="JiraModel.Kategori" Width="1.5" PointX="1.5" PointY="15.25" />
+        <EntityTypeShape EntityType="JiraModel.Kullanici" Width="1.5" PointX="0.75" PointY="4.875" />
+        <EntityTypeShape EntityType="JiraModel.Kullanici_Gorev_Iliskisi" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="JiraModel.Kullanici_Iletisim_Bilgileri" Width="1.5" PointX="6" PointY="5.125" />
+        <EntityTypeShape EntityType="JiraModel.Kullanici_Pozisyon_Iliskisi" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="JiraModel.Pozisyon" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="JiraModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="1.125" />
+        <AssociationConnector Association="JiraModel.FK_Gorev_IsOnceligiId_IsOnceligi_Id" />
+        <AssociationConnector Association="JiraModel.FK_Gorev_Kategori_Kategori_Id" />
+        <AssociationConnector Association="JiraModel.FK_Kullanici_Gorev_Iliskisi_GorevId_Gorev_Id" />
+        <AssociationConnector Association="JiraModel.FK_Kullanici_Iletisim_Bilgileri_IletisimTipiId_Iletisim_Tipi_Id" />
+        <AssociationConnector Association="JiraModel.FK_Kullanici_Gorev_Iliskisi_KullaniciId_Gorevli_Kullanici_Id" />
+        <AssociationConnector Association="JiraModel.FK_Kullanici_Gorev_Iliskisi_KullaniciId_Yonetici_Kullanici_Id" />
+        <AssociationConnector Association="JiraModel.FK_Kullanici_Iletisim_Bilgileri_KullaniciId_Kullanici_Id" />
+        <AssociationConnector Association="JiraModel.FK_Kullanici_Pozisyon_Iliskisi_KullaniciId_Kullanici_Id" />
+        <AssociationConnector Association="JiraModel.FK_Kullanici_Pozisyon_Iliskisi_PozisyonId_Pozisyon_Id" />
+        <AssociationConnector Association="JiraModel.FK_Pozisyon_Id_Pozisyon_UstPozisyonId" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

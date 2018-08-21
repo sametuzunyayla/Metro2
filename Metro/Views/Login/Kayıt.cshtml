@@ -1,0 +1,161 @@
+﻿@using Metro.Models
+@model KullanıcıKayıt
+
+@{
+    ViewBag.Title = "Kayıt";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+@{if (Session["Email"] != null)
+    {
+
+        using (Html.BeginForm("Kayıt", "Login", FormMethod.Post, new { enctype = "multipart/form-data", id = "my_form" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="card">
+                                <div class="header">
+                                    <h2 style="color:red">@ViewBag.Hata</h2>
+                                    <h4 class="title">Kayıt</h4>
+                                </div>
+                                <div class="content">
+                                    &nbsp;&nbsp;&nbsp;
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Ad</label>
+                                                @Html.TextBoxFor(model => model.Ad, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Soyad</label>
+                                                @Html.TextBoxFor(model => model.Soyad, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Doğum Tarihi</label>
+                                                @Html.TextBoxFor(model => model.Doğum_Tarihi, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Doğum_Tarihi)
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                @*<label>Kullanıcı Adı</label>*@
+                                                @Html.LabelFor(model => model.Kullanıcı_Adı)
+                                                @Html.TextBoxFor(model => model.Kullanıcı_Adı, new { @class = "form-control", @id = "Kullanıcı_Adı" })
+                                                @Html.ValidationMessageFor(model => model.Kullanıcı_Adı)
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Şifre</label>
+
+                                                @Html.TextBoxFor(model => model.Şifre, new { @class = "form-control", @id = "Şifre" })
+                                                @Html.ValidationMessageFor(model => model.Şifre)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Şifre Tekrarı</label>
+
+                                                @Html.TextBoxFor(model => model.Şifre_Dogrula, new { @class = "form-control", @id = "Şifre" })
+                                                @Html.ValidationMessageFor(model => model.Şifre_Dogrula)
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label>İletişim Tipi</label>
+
+                                                @Html.DropDownListFor(model => model.İletişim_Tipi, (SelectList)ViewBag.Ad, "", new { @Id = "Ad", @class = "form-control" })
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label>İletişim Adresi</label>
+                                                @Html.TextBoxFor(model => model.İletişim_Adresi, new { @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Pozisyon Id</label>
+
+                                                @Html.DropDownListFor(model => model.Pozisyon_Id, (SelectList)ViewBag.Pozisyon_Id, "", new { @Id = "PozisyonId", @class = "form-control" })
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+                                    <p align="center">
+
+                                        <button type="submit" class="btn btn-dark">Kaydet</button>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        }
+    }
+    else
+    {
+
+
+        Response.Redirect("~/Home/Anasayfa");
+
+    }
+}

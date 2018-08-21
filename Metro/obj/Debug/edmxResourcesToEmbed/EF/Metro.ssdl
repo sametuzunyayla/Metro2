@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MetroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Gorev">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Aciklama" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="KategoriId" Type="int" Nullable="false" />
+    <Property Name="IsOnceligiId" Type="int" Nullable="false" />
+    <Property Name="OlusturmaTarihi" Type="datetime" Nullable="false" />
+    <Property Name="BitisTarihi" Type="datetime" />
+    <Property Name="AktifMi" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Iletisim_Tipi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Aciklama" Type="nvarchar" MaxLength="250" />
+    <Property Name="OlusturmaTarihi" Type="datetime" Nullable="false" />
+    <Property Name="BitisTarihi" Type="datetime" />
+    <Property Name="AktifMi" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IsOnceligi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="Aciklama" Type="nvarchar" MaxLength="250" />
+    <Property Name="OlusturmaTarihi" Type="datetime" Nullable="false" />
+    <Property Name="BitisTarihi" Type="datetime" />
+    <Property Name="AktifMi" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kategori">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Aciklama" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="OlusturmaTarihi" Type="datetime" Nullable="false" />
+    <Property Name="BitisTarihi" Type="datetime" />
+    <Property Name="AktifMi" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kullanici">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="DogumTarihi" Type="datetime" />
+    <Property Name="OlusturmaTarihi" Type="datetime" Nullable="false" />
+    <Property Name="BitisTarihi" Type="datetime" />
+    <Property Name="AktifMi" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kullanici_Gorev_Iliskisi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="GorevId" Type="int" Nullable="false" />
+    <Property Name="KullaniciId_Gorevli" Type="int" Nullable="false" />
+    <Property Name="KullaniciId_Yonetici" Type="int" Nullable="false" />
+    <Property Name="OlusturmaTarihi" Type="datetime" Nullable="false" />
+    <Property Name="BitisTarihi" Type="datetime" />
+    <Property Name="AktifMi" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kullanici_Iletisim_Bilgileri">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="KullaniciId" Type="int" Nullable="false" />
+    <Property Name="IletisimTipiId" Type="int" Nullable="false" />
+    <Property Name="OlusturmaTarihi" Type="datetime" Nullable="false" />
+    <Property Name="BitisTarihi" Type="datetime" />
+    <Property Name="AktifMi" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kullanici_Pozisyon_Iliskisi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="KullaniciId" Type="int" Nullable="false" />
+    <Property Name="PozisyonId" Type="int" Nullable="false" />
+    <Property Name="OlusturmaTarihi" Type="datetime" Nullable="false" />
+    <Property Name="BitisTarihi" Type="datetime" />
+    <Property Name="AktifMi" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pozisyon">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Seviye" Type="int" />
+    <Property Name="UstPozisyonId" Type="int" />
+    <Property Name="YoneticiMi" Type="bit" Nullable="false" />
+    <Property Name="Aciklama" Type="nvarchar" MaxLength="250" />
+    <Property Name="OlusturmaTarihi" Type="datetime" Nullable="false" />
+    <Property Name="BitisTarihi" Type="datetime" />
+    <Property Name="AktifMi" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Gorev_IsOnceligiId_IsOnceligi_Id">
+    <End Role="IsOnceligi" Type="Self.IsOnceligi" Multiplicity="1" />
+    <End Role="Gorev" Type="Self.Gorev" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IsOnceligi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Gorev">
+        <PropertyRef Name="IsOnceligiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Gorev_Kategori_Kategori_Id">
+    <End Role="Kategori" Type="Self.Kategori" Multiplicity="1" />
+    <End Role="Gorev" Type="Self.Gorev" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Gorev">
+        <PropertyRef Name="KategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kullanici_Gorev_Iliskisi_GorevId_Gorev_Id">
+    <End Role="Gorev" Type="Self.Gorev" Multiplicity="1" />
+    <End Role="Kullanici_Gorev_Iliskisi" Type="Self.Kullanici_Gorev_Iliskisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gorev">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kullanici_Gorev_Iliskisi">
+        <PropertyRef Name="GorevId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kullanici_Gorev_Iliskisi_KullaniciId_Gorevli_Kullanici_Id">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="Kullanici_Gorev_Iliskisi" Type="Self.Kullanici_Gorev_Iliskisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kullanici_Gorev_Iliskisi">
+        <PropertyRef Name="KullaniciId_Gorevli" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kullanici_Gorev_Iliskisi_KullaniciId_Yonetici_Kullanici_Id">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="Kullanici_Gorev_Iliskisi" Type="Self.Kullanici_Gorev_Iliskisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kullanici_Gorev_Iliskisi">
+        <PropertyRef Name="KullaniciId_Yonetici" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kullanici_Iletisim_Bilgileri_IletisimTipiId_Iletisim_Tipi_Id">
+    <End Role="Iletisim_Tipi" Type="Self.Iletisim_Tipi" Multiplicity="1" />
+    <End Role="Kullanici_Iletisim_Bilgileri" Type="Self.Kullanici_Iletisim_Bilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Iletisim_Tipi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kullanici_Iletisim_Bilgileri">
+        <PropertyRef Name="IletisimTipiId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kullanici_Iletisim_Bilgileri_KullaniciId_Kullanici_Id">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="Kullanici_Iletisim_Bilgileri" Type="Self.Kullanici_Iletisim_Bilgileri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kullanici_Iletisim_Bilgileri">
+        <PropertyRef Name="KullaniciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kullanici_Pozisyon_Iliskisi_KullaniciId_Kullanici_Id">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="Kullanici_Pozisyon_Iliskisi" Type="Self.Kullanici_Pozisyon_Iliskisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kullanici_Pozisyon_Iliskisi">
+        <PropertyRef Name="KullaniciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kullanici_Pozisyon_Iliskisi_PozisyonId_Pozisyon_Id">
+    <End Role="Pozisyon" Type="Self.Pozisyon" Multiplicity="1" />
+    <End Role="Kullanici_Pozisyon_Iliskisi" Type="Self.Kullanici_Pozisyon_Iliskisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pozisyon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Kullanici_Pozisyon_Iliskisi">
+        <PropertyRef Name="PozisyonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pozisyon_Id_Pozisyon_UstPozisyonId">
+    <End Role="Pozisyon" Type="Self.Pozisyon" Multiplicity="0..1" />
+    <End Role="Pozisyon1" Type="Self.Pozisyon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pozisyon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pozisyon1">
+        <PropertyRef Name="UstPozisyonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MetroModelStoreContainer">
+    <EntitySet Name="Gorev" EntityType="Self.Gorev" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Iletisim_Tipi" EntityType="Self.Iletisim_Tipi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IsOnceligi" EntityType="Self.IsOnceligi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanici_Gorev_Iliskisi" EntityType="Self.Kullanici_Gorev_Iliskisi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanici_Iletisim_Bilgileri" EntityType="Self.Kullanici_Iletisim_Bilgileri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kullanici_Pozisyon_Iliskisi" EntityType="Self.Kullanici_Pozisyon_Iliskisi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pozisyon" EntityType="Self.Pozisyon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Gorev_IsOnceligiId_IsOnceligi_Id" Association="Self.FK_Gorev_IsOnceligiId_IsOnceligi_Id">
+      <End Role="IsOnceligi" EntitySet="IsOnceligi" />
+      <End Role="Gorev" EntitySet="Gorev" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Gorev_Kategori_Kategori_Id" Association="Self.FK_Gorev_Kategori_Kategori_Id">
+      <End Role="Kategori" EntitySet="Kategori" />
+      <End Role="Gorev" EntitySet="Gorev" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kullanici_Gorev_Iliskisi_GorevId_Gorev_Id" Association="Self.FK_Kullanici_Gorev_Iliskisi_GorevId_Gorev_Id">
+      <End Role="Gorev" EntitySet="Gorev" />
+      <End Role="Kullanici_Gorev_Iliskisi" EntitySet="Kullanici_Gorev_Iliskisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kullanici_Gorev_Iliskisi_KullaniciId_Gorevli_Kullanici_Id" Association="Self.FK_Kullanici_Gorev_Iliskisi_KullaniciId_Gorevli_Kullanici_Id">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Kullanici_Gorev_Iliskisi" EntitySet="Kullanici_Gorev_Iliskisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kullanici_Gorev_Iliskisi_KullaniciId_Yonetici_Kullanici_Id" Association="Self.FK_Kullanici_Gorev_Iliskisi_KullaniciId_Yonetici_Kullanici_Id">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Kullanici_Gorev_Iliskisi" EntitySet="Kullanici_Gorev_Iliskisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kullanici_Iletisim_Bilgileri_IletisimTipiId_Iletisim_Tipi_Id" Association="Self.FK_Kullanici_Iletisim_Bilgileri_IletisimTipiId_Iletisim_Tipi_Id">
+      <End Role="Iletisim_Tipi" EntitySet="Iletisim_Tipi" />
+      <End Role="Kullanici_Iletisim_Bilgileri" EntitySet="Kullanici_Iletisim_Bilgileri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kullanici_Iletisim_Bilgileri_KullaniciId_Kullanici_Id" Association="Self.FK_Kullanici_Iletisim_Bilgileri_KullaniciId_Kullanici_Id">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Kullanici_Iletisim_Bilgileri" EntitySet="Kullanici_Iletisim_Bilgileri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kullanici_Pozisyon_Iliskisi_KullaniciId_Kullanici_Id" Association="Self.FK_Kullanici_Pozisyon_Iliskisi_KullaniciId_Kullanici_Id">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Kullanici_Pozisyon_Iliskisi" EntitySet="Kullanici_Pozisyon_Iliskisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kullanici_Pozisyon_Iliskisi_PozisyonId_Pozisyon_Id" Association="Self.FK_Kullanici_Pozisyon_Iliskisi_PozisyonId_Pozisyon_Id">
+      <End Role="Pozisyon" EntitySet="Pozisyon" />
+      <End Role="Kullanici_Pozisyon_Iliskisi" EntitySet="Kullanici_Pozisyon_Iliskisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pozisyon_Id_Pozisyon_UstPozisyonId" Association="Self.FK_Pozisyon_Id_Pozisyon_UstPozisyonId">
+      <End Role="Pozisyon" EntitySet="Pozisyon" />
+      <End Role="Pozisyon1" EntitySet="Pozisyon" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
